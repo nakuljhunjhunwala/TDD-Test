@@ -26,3 +26,14 @@ test('returns the number for a single number input', () => {
     expect(stringCalculator('1\n2,3')).toBe(6);
     expect(stringCalculator('1\n2\n3')).toBe(6);
   });
+
+    test('throws an error for invalid input', () => {
+        expect(() => stringCalculator('1,\n')).toThrowError('Invalid input');
+        expect(() => stringCalculator('1,\n3')).toThrowError('Invalid input');
+    });
+
+    test('returns the sum of numbers with custom delimiter', () => {
+        expect(stringCalculator('//;\n1;2')).toBe(3);
+        expect(stringCalculator('//:\n1:2:3')).toBe(6);
+        expect(stringCalculator('//|\n1|2|3')).toBe(6);
+    });
