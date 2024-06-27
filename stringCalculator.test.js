@@ -37,3 +37,10 @@ test('returns the number for a single number input', () => {
         expect(stringCalculator('//:\n1:2:3')).toBe(6);
         expect(stringCalculator('//|\n1|2|3')).toBe(6);
     });
+
+    test('throws an error for negative numbers', () => {
+        expect(() => stringCalculator('1,-2')).toThrowError('negative numbers not allowed -2');
+        expect(() => stringCalculator('1,-2,-3')).toThrowError('negative numbers not allowed -2,-3');
+        expect(() => stringCalculator('1,-2\n-3')).toThrowError('negative numbers not allowed -2,-3');
+        expect(() => stringCalculator('//|\n1|-2|3')).toThrowError('negative numbers not allowed -2');
+    });

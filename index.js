@@ -8,6 +8,11 @@ try {
         return parseInt(str)
     }
 
+    let negativeNumbers = str.match(/-\d/g)
+    if (negativeNumbers) {
+        throw new Error(`negative numbers not allowed ${negativeNumbers.join()}`)
+    }
+
     let customDelimiter = str.match(/\/\/(.)\n/);
 
     let numbers = []
@@ -27,7 +32,7 @@ try {
     }
     return sum
 } catch (error) {
-   throw new Error("Invalid input")
+   throw new Error(error.message || "Invalid input")
 }
 }
 
