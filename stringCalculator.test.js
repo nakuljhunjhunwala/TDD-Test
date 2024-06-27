@@ -44,3 +44,10 @@ test('returns the number for a single number input', () => {
         expect(() => stringCalculator('1,-2\n-3')).toThrowError('negative numbers not allowed -2,-3');
         expect(() => stringCalculator('//|\n1|-2|3')).toThrowError('negative numbers not allowed -2');
     });
+
+    test('ignores numbers greater than 1000', () => {
+        expect(stringCalculator('1,1001')).toBe(1);
+        expect(stringCalculator('1001,1001')).toBe(0);
+        expect(stringCalculator('1001,1001\n1001')).toBe(0);
+        expect(stringCalculator('//|\n1|1001|3')).toBe(4);
+    });

@@ -21,6 +21,7 @@ try {
     } else {
         numbers = str.split(/,|\n/)
     }
+    numbers = numbers.filter(number => number <= 1000)
     let sum = 0
     for (let i = 0; i < numbers.length; i++) {
         const number = parseInt(numbers[i])
